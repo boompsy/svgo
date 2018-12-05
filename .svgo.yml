@@ -16,6 +16,7 @@ plugins:
   #     param1: 1
   #     param2: 2
 
+  - preOptimizationChecks
   - removeDoctype
   - removeXMLProcInst
   - removeComments
@@ -23,7 +24,9 @@ plugins:
   - removeXMLNS
   - removeEditorsNSData
   - cleanupAttrs
-  - inlineStyles
+  - groupShapesByClass
+  - inlineStyles2:
+      onlyMatchedOnce: false
   - minifyStyles
   - convertStyleToAttrs
   - cleanupIDs
@@ -36,14 +39,14 @@ plugins:
   - removeUnknownsAndDefaults
   - removeNonInheritableGroupAttrs
   - removeUselessStrokeAndFill
-  - removeViewBox
+  - removeViewBox: false
   - cleanupEnableBackground
   - removeHiddenElems
   - removeEmptyText
   - convertShapeToPath
   - moveElemsAttrsToGroup
   - moveGroupAttrsToElems
-  - collapseGroups
+  - collapseGroups2
   - convertPathData
   - convertTransform
   - removeEmptyAttrs
