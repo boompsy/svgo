@@ -62,12 +62,18 @@ exports.fn = function(item) {
                             if (g.content.some(hasAnimatedAttr, attr.name)) return;
 
                             if (!inner.hasAttr(attr.name)) {
+                                // This doesn't always succeed because attr.local or attr.prefix can be undefined
                                 inner.addAttr(attr);
+
                                 if (attr.name === "class") {
-                                    inner.class.add(g.class.getClassValue());
+									inner.class.add(g.class.getClassValue());
                                 }
+
                                 if (attr.name === "style") {
-                                    inner.style.add(g.style.getStyleValue());
+									inner.style.hasStyle();
+									// Note - this overrides any existing styles!
+									inner.style.setStyleValue(g.style.getStyleValue());
+									
                                 }
                             } else if (attr.name == 'transform') {
                                 inner.attr(attr.name).value = attr.value + ' ' + inner.attr(attr.name).value;
